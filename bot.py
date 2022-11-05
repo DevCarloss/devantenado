@@ -15,7 +15,7 @@ client = discord.Client(intents=Intents)
 @tasks.loop(hours=24)
 
 async def embedsnews():
-  channelId = client.get_channel(1037900323534159972)
+  channelId = client.get_channel()
   
   # Veja News
   
