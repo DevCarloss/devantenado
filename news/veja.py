@@ -1,18 +1,17 @@
-import requests
-from bs4 import BeautifulSoup
+from news.getNews import requestNews
 
 # Script Noticias veja.com.br/ultimas
 
 # Veja News Requests
 
-vejaUrl = "https://veja.abril.com.br/ultimas-noticias/"
+URL = "https://veja.abril.com.br/ultimas-noticias/"
 
-vejaReq = requests.get(vejaUrl)
 
-vejabs4 = BeautifulSoup(vejaReq.text,'html.parser')
+vejaBs4 = requestNews(URL)
 
 # Veja News 
-
-vejanewsName = vejabs4.find('h2',attrs={'class': 'title'}).getText()
-
-vejanewsImg = vejabs4.find('figure',attrs={'class':'media'}).find('img')['src']
+vejaTitleH2 = vejaBs4.find('h2',attrs={'class': 'title'})
+newsDescription = vejaBs4.find('span', attrs={"class":"description"}).getText()
+newsLink = vejaTitleH2.find_parent('a')['href']
+newsTitle = vejaTitleH2.getText()
+newsImage = vejaBs4.find('figure',attrs={'class':'media'}).find('img')['src']
