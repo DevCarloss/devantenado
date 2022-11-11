@@ -1,18 +1,15 @@
-import requests
-from bs4 import BeautifulSoup
+
+from news.getNews import requestNews
 
 # Script Requests olhardigital.com.br
 
-olhardigitalUrl = "https://olhardigital.com.br/editorias/noticias/amp/"
+URL = "https://olhardigital.com.br/editorias/noticias/amp/"
 
-olhardigitalReq = requests.get(olhardigitalUrl)
-
-olhardigitalbs4 = BeautifulSoup(olhardigitalReq.text,'html.parser')
-
+olharDigitalBs4 = requestNews(URL)
 # Olhar Digital News
+linkPost = olharDigitalBs4.find('a',attrs={'class': "od-post"})
 
-olhardigitalnewsName = olhardigitalbs4.find('a',attrs={'class': "od-post"})['title']
-
-olhardigitalnewsImg = olhardigitalbs4.find('div',attrs={'class': "od-post-img"}).find('amp-img')['src']
-
-olhardigitalnewsExcerpt = olhardigitalbs4.find('div',attrs={'class': "od-post-excerpt"}).getText()
+newsLink = linkPost['href']
+newsTitle = linkPost['title']
+newsImage= olharDigitalBs4.find('div',attrs={'class': "od-post-img"}).find('amp-img')['src']
+newsDescription = olharDigitalBs4.find('div',attrs={'class': "od-post-excerpt"}).getText()
