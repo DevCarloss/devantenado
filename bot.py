@@ -5,7 +5,7 @@ from news import olhardigital
 from news import veja
 import config
 
-# dev antenado by devcarlos
+# dev antenado by devcarlos & oliyan
 
 Intents = discord.Intents.all()
 
