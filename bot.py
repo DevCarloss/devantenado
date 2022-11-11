@@ -4,7 +4,7 @@ from discord.ext import tasks
 from news import adrenaline
 from news import olhardigital
 
-# dev antenado by devcarlos
+# dev antenado by devcarlos & oliyan
 
 Intents = discord.Intents.all()
 
